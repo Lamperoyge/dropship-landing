@@ -1,6 +1,10 @@
-const di = () => {
+const di = (param = '') => {
     return {
-        getHello: fetch('/api/hello')
+        getHello: fetch('/api/hello'),
+        sendEmail: fetch(`/send/${param}`, {
+            method: 'POST',
+            body: param
+        })
     }
 };
 

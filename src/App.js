@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import di from './services/DI';
+import {isMobile} from "react-device-detect";
+import Layout from './components/Layout'
 class App extends Component {
 
 
@@ -14,14 +16,18 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.callApi()
-    .then(res => this.setState({response: res}))
+    this.callApi().then((res) => console.log(res));
+    if(!isMobile) {
+      require('./main.css');
+    }
+    else {
+      require('./mobile.css')
+    }
   }
 
   callApi = async () => {
     const response = await di().getHello;
     const body = await response.json()
-
     if (response.status !== 200) throw Error(body.message);
     return body;
   }
@@ -29,22 +35,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      <span>{this.state.response.express}</span>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Layout />
       </div>
     );
   }
