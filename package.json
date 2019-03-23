@@ -4,14 +4,15 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",
+    "emailjs-com": "^2.3.2",
     "react": "^16.8.4",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
     "simple-react-validator": "^1.0.5",
     "validator": "^10.11.0"
   },
-  "proxy": "https://shrouded-badlands-76315.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

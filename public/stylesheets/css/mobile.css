@@ -4,9 +4,9 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.sticky-container {
+/* .sticky-container {
     opacity: 0.1;
-}
+} */
 
 #amazingUnnecessaryContainer {
     overflow:hidden;
@@ -139,6 +139,11 @@ body {
 
 .awesomeButtonDisabled:hover {
     cursor:not-allowed !important;
+}
+
+
+#amazingUnnecessaryContainer > div > div.slideImageSection > img {
+    background-size: contain !important;
 }
 
 .validationAlerts {
