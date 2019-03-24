@@ -9,6 +9,14 @@ import * as emailjs from 'emailjs-com';
 
 
 class Page extends Component {
+  constructor(props) {
+    super(props);
+    this.state={
+      email: props.email,
+      checkbox: props.checkbox,
+      status: props.status
+    }
+  }
   render() {
     return(
       <ReactCSSTransitionGroup transitionName="example"
@@ -28,7 +36,9 @@ class Page extends Component {
             </div>
             <div className="absolutePositionContent">
               <p className="slideEmailInputFooter"> Get started to find out more.(hit or miss, we won't spam you, promise)</p>
-              <div className="emailInputContainer"><input className="awesomeEmailInput" type="email" name="awesome-email" onBlur={this.props.handleEmail} placeholder="Your email goes here" /><button onClick={this.props.sendEmail} className={`awesomeButton ${!this.props.validation()? 'awesomeButtonDisabled' : ''}`} disabled={!this.props.validation()} style={{backgroundColor: '#FB7566'}}><i className="fas fa-angle-right" /></button></div>
+              {this.state.status ?
+              <div className="emailInputContainer">
+              <input className="awesomeEmailInput" type="email" name="awesome-email" onBlur={this.props.handleEmail} placeholder="Your email goes here"/><button onClick={this.props.sendEmail} className={`awesomeButton ${!this.props.validation()? 'awesomeButtonDisabled' : ''}`} disabled={!this.props.validation()} style={{backgroundColor: '#FB7566'}}><i className="fas fa-angle-right" /></button></div> : null }
               <span className="emailValidation">Got it! Expect the unexpected. The good unexpected.</span><label className="checkboxContainer"><input className="slideCheckbox" defaultChecked={this.props.checkbox} onChangeCapture={this.props.handleCheckbox} type="checkbox" autoComplete="off" /><span className="checkmark" />I agree to receive emails from ForeverLit with news, deals and friendly messages. </label>
               <div className="notAnotherContainer">
               </div>
@@ -36,7 +46,7 @@ class Page extends Component {
             </div>
           </div>
           <div className="slideImageSection">
-          <img className="mockup images" style={{backgroundImage: `url(${bart})`, backgroundPosition: 'center', backgroundSize: 'cover'}} value={this.props.email}/>
+          <img className="mockup images" style={{backgroundImage: `url(${bart})`, backgroundPosition: 'center', backgroundSize: 'cover'}} value={this.state.email}/>
             <div className="socialToolbar">
               <li className="shareFB"><a className="social-icon" href="https://www.facebook.com/forever.lit.shop/" target="_blank"><i className="fab fa-facebook-f" /></a></li>
 
@@ -58,7 +68,7 @@ export default class Layout extends Component {
     this.state = {
       email: '',
       checkbox: false,
-      status: false,
+      status: true,
       loaded: false
     }
   }
@@ -92,10 +102,10 @@ export default class Layout extends Component {
 
   sendEmail = () => {
     emailjs.send('sendgrid','foreverlit', {text: this.state.email}, 'user_wqoXA2gsZpuxZv9oKy7Eo')
-    .then(function(response) {
+    .then((response) => {
        console.log('SUCCESS!', response.status, response.text);
        this.setState({
-         status: true,
+         status: false,
          email: '',
          checkbox: false
        })
@@ -119,6 +129,7 @@ export default class Layout extends Component {
             sendEmail={this.sendEmail} 
             validation={this.validation} 
             checkbox={this.state.checkbox} 
+            status={this.state.status}
             email={this.state.email}/> : <Loader />}
         </div>
     )
