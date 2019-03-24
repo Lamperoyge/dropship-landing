@@ -882,25 +882,20 @@
     .fa-facebook-f {
         padding: 10px 14px;
     }
-    .fa-twitter {
+    .fa-instagram {
         padding: 10px 14px;
     }
     
-    .fa-linkedin-in {
-        padding: 10px 14px;
-    }
     .fa-facebook-f:hover {
         background-color: #3d5b99 !important;
         background-color: #3d5b99 !important;
         cursor:pointer;
     }
-    .fa-twitter:hover {
-        background-color: #00aced;
-    }
-    .fa-linkedin-in:hover {
-        background-color: #0073a4;
-    }
     
+    .fa-instagram:hover {
+      background: #d6249f;
+    }
+
     .social-icon {
         color: #fff;
     }
