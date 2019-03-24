@@ -46,7 +46,7 @@ class Page extends Component {
             </div>
           </div>
           <div className="slideImageSection">
-          <img className="mockup images" style={{backgroundImage: `url(${bart})`, backgroundPosition: 'center', backgroundSize: 'cover'}} value={this.state.email}/>
+          <img className="mockup images" style={{backgroundImage: `url(${bart})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundColor: '#C1272D'}} value={this.state.email}/>
             <div className="socialToolbar">
               <li className="shareFB"><a className="social-icon" href="https://www.facebook.com/forever.lit.shop/" target="_blank"><i className="fab fa-facebook-f" /></a></li>
 
